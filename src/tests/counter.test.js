@@ -1,5 +1,8 @@
+//installl react testing library
 import Counter from "../components/Counter";
 import { render, fireEvent, screen, getByText } from "@testing-library/react";
+//use this in test last test case
+import userEvent from "@testing-library/user-event";
 
 describe("Test the component is visible", () => {
 	test("Counter component is visible", () => {
@@ -14,7 +17,7 @@ describe("Test the component is visible", () => {
 		const counter = getByTestId("decrement");
 		expect(counter).toBeInTheDocument();
 	});
-});
+});292
 
 describe("Checking the counter value is changing or not", () => {
 	it("Counter value is incrementing", () => {
@@ -27,7 +30,7 @@ describe("Checking the counter value is changing or not", () => {
 	it("Counter value is decrementing", () => {
 		const { getByText, getByTestId } = render(<Counter />);
 		const decrement = getByTestId("decrement");
-		fireEvent.click(decrement);
+		userEvent.click(decrement);
 		const counter = getByText("-1");
 		expect(counter).toBeInTheDocument();
 	});
